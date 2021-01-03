@@ -29,7 +29,9 @@ const nextYear = `${currentYear + 1}-${currentMonth}-${currentDay}`;
 // BASE URL
 const base_url = "https://api.rawg.io/api/";
 
-//POPULAR GAMES
+//FETCH GAMES
 const popular_games = `games?dates=${lastYear},${currentDate}&ordering=-rating&page_size=10`;
+const upcoming_games = `games?dates=${currentDate},${nextYear}&ordering=-added&page_size=10`;
 
 export const popularGamesURL = () => `${base_url}${popular_games}`;
+export const upcomingGamesURL = () => `${base_url}${upcoming_games}`;
