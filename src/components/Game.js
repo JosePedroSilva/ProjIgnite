@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { loadDetails } from "../actions/detailAction";
 
 const Game = ({ name, released, image, id }) => {
+  const StringPathId = id.toString();
   const dispatch = useDispatch();
   const loadDetailHandler = () => {
     document.body.style.overflow = "hidden";
@@ -16,11 +17,15 @@ const Game = ({ name, released, image, id }) => {
   };
 
   return (
-    <StyledGames onClick={loadDetailHandler}>
+    <StyledGames layoutId={StringPathId} onClick={loadDetailHandler}>
       <Link to={`/game/${id}`}>
-        <h3>{name}</h3>
+        <motion.h3 layoutId={`title ${StringPathId}`}>{name}</motion.h3>
         <p>{released}</p>
-        <img src={smallImage(image, 640)} alt={name} />
+        <motion.img
+          layoutId={`image ${StringPathId}`}
+          src={smallImage(image, 640)}
+          alt={name}
+        />
       </Link>
     </StyledGames>
   );
