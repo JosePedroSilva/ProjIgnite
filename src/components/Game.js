@@ -4,6 +4,7 @@ import { smallImage } from "../util";
 //Style & Animation
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { popup } from "../animations";
 //Redux
 import { useDispatch } from "react-redux";
 import { loadDetails } from "../actions/detailAction";
@@ -17,7 +18,13 @@ const Game = ({ name, released, image, id }) => {
   };
 
   return (
-    <StyledGames layoutId={StringPathId} onClick={loadDetailHandler}>
+    <StyledGames
+      variants={popup}
+      initial="hidden"
+      animate="show"
+      layoutId={StringPathId}
+      onClick={loadDetailHandler}
+    >
       <Link to={`/game/${id}`}>
         <motion.h3 layoutId={`title ${StringPathId}`}>{name}</motion.h3>
         <p>{released}</p>
